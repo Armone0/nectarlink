@@ -20,6 +20,11 @@ change things that need a step from you, and its notes say so.
 - **Sharing your PC's screen with the phone uses H.265** when both sides
   can, and H.264 otherwise. Thanks to [@AS8148](https://github.com/AS8148)
   ([#66](https://github.com/thtbee/nectarlink/pull/66)).
+- **Hardware video for screen sharing on Linux.** With FFmpeg 6 to 9
+  installed, sharing the PC's screen and showing a shared screen use the
+  GPU (VAAPI, NVIDIA or Intel QSV) and fall back to software H.264 when it
+  can't. Thanks to [@AS8148](https://github.com/AS8148)
+  ([#67](https://github.com/thtbee/nectarlink/pull/67)).
 - **Elevated over USB.** Plug the phone into the PC with USB debugging
   allowed and Elevated starts by itself, without setting up Wireless
   debugging. It runs while the cable is in. The PC only starts NectarLink's
@@ -138,6 +143,9 @@ has a Stop button. Choosing another
 
 ### Changed
 
+- **Files received on Windows are marked as from another device,** the way
+  a browser marks a download, so Windows checks a program with SmartScreen
+  before it runs and Office opens documents in Protected View.
 - **Pause for banking apps uses less battery.** While the screen is off,
   the phone checks the app in front every 15 seconds instead of several
   times a second, and checks again as soon as the screen turns on. By
@@ -166,6 +174,12 @@ has a Stop button. Choosing another
 
 ### Fixed
 
+- **A big phone folder showed only part of its files** in File Explorer (a
+  camera folder of thousands of photos, say). Folders now come in pages, so
+  every file shows, and listing one no longer holds up the connection.
+- **A transfer too big for the receiving drive started anyway** and failed
+  partway. The receiver now checks the space first and the sender says
+  there isn't enough.
 - **The phone's keyboard didn't open after typing from the PC.** With
   Elevated, the PC's keys reach the phone through a virtual keyboard that
   stayed connected, so Android hid the on-screen keyboard in every app. It
