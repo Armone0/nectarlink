@@ -88,10 +88,9 @@ pub fn on_event(event: &NodeEvent) {
     let name =
         core_host::host().hub.read(|s| s.name_of(device)).unwrap_or_else(|| tr!("Battery", "Your phone"));
     let (title, body) = match alert {
-        Alert::Low(level) => (
-            tr!("Battery", "%1's battery is low", name),
-            tr!("Battery", "%1% left. Charge it soon.", level),
-        ),
+        Alert::Low(level) => {
+            (tr!("Battery", "%1's battery is low", name), tr!("Battery", "%1% left. Charge it soon.", level))
+        }
         Alert::Full(level) => {
             if level >= 100 {
                 (tr!("Battery", "%1 is fully charged", name), tr!("Battery", "You can unplug it."))

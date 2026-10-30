@@ -240,7 +240,8 @@ fn default_battery_full_threshold() -> u8 {
     100
 }
 
-static NICKNAMES: std::sync::Mutex<Option<std::collections::HashMap<String, String>>> = std::sync::Mutex::new(None);
+static NICKNAMES: std::sync::Mutex<Option<std::collections::HashMap<String, String>>> =
+    std::sync::Mutex::new(None);
 
 pub fn device_nicknames() -> std::collections::HashMap<String, String> {
     NICKNAMES.lock().unwrap_or_else(|e| e.into_inner()).clone().unwrap_or_default()
@@ -406,7 +407,11 @@ pub struct Settings {
     #[serde(default = "default_battery_full_threshold", alias = "battery_full_threshold")]
     pub battery_full_threshold: u8,
     /// User-assigned nicknames for paired phones by their device ID (hex string).
-    #[serde(default, skip_serializing_if = "std::collections::HashMap::is_empty", alias = "device_nicknames")]
+    #[serde(
+        default,
+        skip_serializing_if = "std::collections::HashMap::is_empty",
+        alias = "device_nicknames"
+    )]
     pub device_nicknames: std::collections::HashMap<String, String>,
     /// Start when the user signs in. Unset until the user chooses: then an
     /// installed copy starts with Windows and a build run from its folder
