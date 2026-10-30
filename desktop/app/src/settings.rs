@@ -796,6 +796,8 @@ mod tests {
             auto_update: false,
             install_updates: false,
             battery_alerts: false,
+            battery_full_threshold: 80,
+            device_nicknames: std::collections::HashMap::from([("abc".to_owned(), "Work phone".to_owned())]),
             start_with_windows: Some(true),
             recordings_folder: Some(PathBuf::from(r"C:\Recordings")),
             recordings_format: RecordingFormat::Flac,
